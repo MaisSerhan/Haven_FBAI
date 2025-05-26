@@ -1,0 +1,76 @@
+const { body, param} = require('express-validator');
+const {DOCTORS} = require("../../Constant/Db_tables");
+const db = require("../../Constant/db_configuration");
+
+const validateWeekStartDate = body('week_start_date')
+    .notEmpty()
+    .withMessage('تاريخ بداية الأسبوع مطلوب.')
+    .bail()
+    .isISO8601()
+    .withMessage('يجب أن يكون تاريخ بداية الأسبوع صالحًا بصيغة YYYY-MM-DD.');
+
+const validateScheduleArray = body('schedule')
+    .isArray({ min: 7, max: 7 })
+    .withMessage('يجب أن تكون البيانات عبارة عن مصفوفة تحتوي على 7 عناصر (تمثل أيام الأسبوع).')
+    .bail()
+    .custom((schedule) => {
+        schedule.forEach((day, index) => {
+            if (!Number.isInteger(day.weekday) || day.weekday < 0 || day.weekday > 6) {
+                throw new Error(`يجب أن يكون رقم اليوم (weekday) في العنصر رقم ${index} عددًا صحيحًا بين 0 و 6.`);
+            }
+
+            if (typeof day.is_available !== 'boolean') {
+                throw new Error(`توفر الطبيب (is_available) في العنصر رقم ${index} يجب أن يكون قيمة منطقية (true أو false).`);
+            }
+
+            if (day.is_available) {
+                if (!day.start_time) {
+                    throw new Error(`وقت البداية مطلوب في العنصر رقم ${index} لأن الطبيب متوفر.`);
+                }
+                if (!/^([01]\d|2[0-3]):([0-5]\d)$/.test(day.start_time)) {
+                    throw new Error(`وقت البداية في العنصر رقم ${index} يجب أن يكون بصيغة HH:mm.`);
+                }
+
+                if (!day.end_time) {
+                    throw new Error(`وقت الانتهاء مطلوب في العنصر رقم ${index} لأن الطبيب متوفر.`);
+                }
+                if (!/^([01]\d|2[0-3]):([0-5]\d)$/.test(day.end_time)) {
+                    throw new Error(`وقت الانتهاء في العنصر رقم ${index} يجب أن يكون بصيغة HH:mm.`);
+                }
+
+                if (typeof day.session_duration === 'undefined') {
+                    throw new Error(`مدة الجلسة مطلوبة في العنصر رقم ${index} لأن الطبيب متوفر.`);
+                }
+                if (!Number.isInteger(day.session_duration) || day.session_duration < 1 || day.session_duration > 60) {
+                    throw new Error(`مدة الجلسة في العنصر رقم ${index} يجب أن تكون رقمًا صحيحًا بين 1 و 60 دقيقة.`);
+                }
+
+                const [startHour, startMin] = day.start_time.split(':').map(Number);
+                const [endHour, endMin] = day.end_time.split(':').map(Number);
+                const startTotal = startHour * 60 + startMin;
+                const endTotal = endHour * 60 + endMin;
+                if (startTotal >= endTotal) {
+                    throw new Error(`في العنصر رقم ${index} يجب أن يكون وقت البداية أقل من وقت الانتهاء.`);
+                }
+            }
+        });
+        return true;
+    });
+
+const doctor_id = param('doctor_id').notEmpty().withMessage('رقم الطبيب مطلوب.').bail()
+    .isInt().withMessage('رقم الطبيب مطلوب.').bail()
+    .custom(async (value) => {
+        const doctor = await db(DOCTORS).where('doctor_id', value).first();
+        if (!doctor) {
+            throw new Error('الطبيب غير موجود');
+        }
+        return true;
+    })
+
+const validateDoctorWeeklySchedule = [
+    validateWeekStartDate,
+    validateScheduleArray,
+];
+const getDoctorId = [doctor_id]
+
+module.exports = { validateDoctorWeeklySchedule , getDoctorId };

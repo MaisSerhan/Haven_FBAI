@@ -1,0 +1,30 @@
+const db = require('../../Constant/db_configuration');
+const {WHEELS} = require('../../Constant/Db_tables');
+
+const addWheel = async (description , type) => {
+    try {
+        return await db(WHEELS).insert({description , type});
+    } catch (error) {
+        return error;
+    }
+}
+
+const getWheelService = async (type) => {
+    try {
+        return await db(WHEELS).where('type', type).select('*');
+    } catch (error) {
+        return error;
+    }
+}
+
+const updateWheelService = async (wheel_id , description , type) => {
+    try {
+        return await db(WHEELS).where('wheels_id', wheel_id).update({description , type});
+    } catch (error) {
+        return error;
+    }
+}
+
+module.exports = {
+    addWheel , getWheelService , updateWheelService
+}

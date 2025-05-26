@@ -1,0 +1,107 @@
+const { body } = require("express-validator");
+const db = require("../../Constant/db_configuration");
+const { USERS, CITIES, DOCTORS} = require("../../Constant/Db_tables");
+
+const emailForLogin = body('email')
+    .notEmpty()
+    .withMessage('البريد الإلكتروني مطلوب')
+    .bail()
+    .isEmail()
+    .withMessage('صيغة البريد الإلكتروني غير صحيحة');
+
+const password = body('password')
+    .notEmpty()
+    .withMessage('كلمة المرور مطلوبة')
+    .bail()
+    .isLength({ min: 6 })
+    .withMessage('كلمة المرور يجب أن تكون على الأقل 6 حروف');
+
+const confirmPassword = body('confirmPassword')
+    .notEmpty()
+    .withMessage('تأكيد كلمة المرور مطلوب')
+    .bail()
+    .custom((value, { req }) => {
+        if (value !== req.body.password) {
+            throw new Error('كلمة المرور غير متطابقة');
+        }
+        return true;
+    });
+
+
+const name = body('name')
+    .notEmpty()
+    .withMessage('الاسم مطلوب')
+    .bail()
+    .isString()
+    .withMessage('الاسم يجب أن يكون نصاً');
+
+const email = body('email')
+    .notEmpty()
+    .withMessage('البريد الإلكتروني مطلوب')
+    .bail()
+    .isEmail()
+    .withMessage('صيغة البريد الإلكتروني غير صحيحة')
+    .bail()
+    .custom(async (value) => {
+        const emailIsExistInUser = await db(USERS).where('email', value).first();
+        const emailIsExistInDoctor = await db(DOCTORS).where('email', value).first();
+        if (emailIsExistInUser || emailIsExistInDoctor) {
+            return Promise.reject('البريد الإلكتروني موجود بالفعل، يرجى اختيار بريد إلكتروني آخر');
+        }
+        return Promise.resolve();
+    });
+
+const phone = body('phone')
+    .notEmpty()
+    .withMessage('رقم الهاتف مطلوب')
+    .bail()
+    .isMobilePhone('any')
+    .withMessage('رقم الهاتف غير صحيح')
+
+const city_id = body('city_id')
+    .notEmpty()
+    .withMessage('المدينة مطلوبة')
+    .bail()
+    .isInt()
+    .withMessage('معرف المدينة يجب ان يكون رقم صحيح')
+    .custom(async (value) => {
+        const city = await db(CITIES).where('city_id', value).first();
+        if (!city) {
+            throw new Error('المدينة غير موجودة');
+        }
+        return true;
+    });
+
+const level = body('level')
+    .notEmpty()
+    .withMessage('المستوى مطلوب')
+    .bail()
+    .isIn(['حمل', 'ولادة','السنة الأولى من طفلك','السنة الثانية من طفلك'])
+    .withMessage('يجب ان يكون المستوى حمل او ولادة او السنة الأولى من طفلك او السنة الثانية من طفلك');
+
+const role = body('role')
+    .notEmpty()
+    .withMessage('الدور مطلوبة')
+    .bail()
+    .isIn(['father', 'mother'])
+    .withMessage('يجب ان يكون الدور father او mother');
+
+const major = body('major')
+    .notEmpty()
+    .withMessage('التخصص مطلوب')
+    .bail()
+    .isIn(['نسائية وتوليد','طبيب أطفال'])
+    .withMessage('يجب ان يكون التخصص نسائية وتوليد او طبيب أطفال');
+
+const location = body('location')
+    .notEmpty()
+    .withMessage('موقع العيادة مطلوب')
+    .bail()
+    .isString()
+    .withMessage('موقع العيادة يجب ان يكون نصاً');
+
+
+const loginValidation = [emailForLogin, password];
+const UserRegisterValidation = [name, email, password, confirmPassword, city_id, level, role];
+const DoctorRegisterValidation = [name,email,password,confirmPassword,city_id,phone,major,location];
+module.exports = { loginValidation, UserRegisterValidation, DoctorRegisterValidation };

@@ -1,0 +1,101 @@
+const { login, register, registerDoctorService } = require("../../Authentication/Service/Auth_service");
+const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
+
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await login(email, password);
+
+        const user_id = user.role === 'doctor' ? user.doctor_id : user.user_id;
+
+        const token = jwt.sign(
+            { user_id, email: user.email, role: user.role },
+            process.env.JWT_SECRET
+        );
+
+        return res.status(200).json({
+            result: {
+                user_id,
+                email: user.email,
+                role: user.role,
+            },
+            token,
+        });
+    } catch (error) {
+        const statusCode = error.message === 'كلمة المرور او البريد الالكتروني غير صحيح' ? 401 : 500;
+        return res.status(statusCode).json({ message: error.message });
+    }
+};
+
+const registerUser = async (req, res) => {
+    const { name, email, password, city_id, level, role } = req.body;
+
+    const profile_image = req.file
+        ? {
+            file_name: req.file.originalname,
+            file_path: req.file.path.replace(/\\/g, '/'),
+            description: req.body.description || null,
+        }
+        : null;
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = await register(name, email, hashedPassword, city_id, level, role, profile_image);
+
+        const token = jwt.sign(
+            { user_id: newUser.user_id, email: newUser.email, role: newUser.role },
+            process.env.JWT_SECRET
+        );
+
+        return res.status(201).json({
+            result: {
+                user_id: newUser.user_id,
+                email: newUser.email,
+                role: newUser.role,
+            },
+            token
+        });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+const registerDoctor = async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'يجب ارفاق صورة البطاقة للطبيب' });
+    }
+
+    const { name, email, password, city_id, phone, major, location } = req.body;
+
+    const doctor_image = {
+        file_name: req.file.originalname,
+        file_path: req.file.path.replace(/\\/g, '/'),
+        description: "doctor ID card"
+    };
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newDoctor = await registerDoctorService(name, email, hashedPassword, city_id, phone, major, location, doctor_image);
+
+        const token = jwt.sign(
+            { user_id: newDoctor.doctor_id, email: newDoctor.email, role: 'doctor' },
+            process.env.JWT_SECRET
+        );
+
+        return res.status(201).json({
+            result: {
+                user_id: newDoctor.doctor_id,
+                email: newDoctor.email,
+                role: 'doctor',
+            },
+            token
+        });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+module.exports = { loginUser, registerUser, registerDoctor };
