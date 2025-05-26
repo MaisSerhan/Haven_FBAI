@@ -1,0 +1,64 @@
+@import url(../../../Assets/styles/navbar.css);
+
+#front .carousel-item img {
+    height: 70vh;  /* Or a fixed height like 400px */
+    object-fit: cover; /* or contain, depending on how you want the image to fit */
+}
+#blog .carousel-item img {
+  height: 248px;  /* Or a fixed height like 400px */
+  object-fit: cover; /* or contain, depending on how you want the image to fit */
+  width: 66%;
+  margin-left: 22%;
+}
+
+body section , #about{
+  margin-bottom: 20vh !important; /* Adjust the spacing as needed */
+}
+
+.full-bg {
+  background-image: url('https://static.wixstatic.com/media/4bf508bbd14a423fb02f9e732519c0c2.jpg/v1/fill/w_1954,h_935,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4bf508bbd14a423fb02f9e732519c0c2.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+.dropdown-item:active {
+  background-color: #f9d2ff;
+}
+.accordion-container {
+  background-color: var(--sec-backg-col);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px; /* Add margin to separate from title */
+}
+
+.left-content {
+padding: 20px;
+color: white; /* Example text color */
+text-align: left; /* Align text to left */
+}
+
+article{
+  padding-top: 30px;
+}
+
+@media (max-width: 770px) {
+  #blog .carousel-item img {
+    margin-left: 0%;
+  }
+  
+}
+@media (max-width: 550px) {
+  #blog article {
+    display: block;
+    flex-basis: 100% !important;
+    height: 100vh; /* Make the article take up 100% of the viewport height */
+    overflow-y: auto;
+  }
+  #blog .blog-posts{
+    flex-direction: column;
+    margin: auto;
+    padding: 43px;
+  }
+}

@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Satisfy&display=swap');
+@import url('../../Pregnant/src/Pregnant.css');
+.hero {
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-img {
+  width: 90%;
+  height: 68vh;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-size: 34px;
+  color: #630565;
+  font-family: 'Satisfy', cursive;
+  margin-bottom: 10px;
+}
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.content-box {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.content-box:hover {
+  transform: translateY(-5px);
+}
+
+.content-box h3 {
+  font-size: 24px;
+  color: #FF0057;
+  margin-bottom: 15px;
+}
+
+.content-box p {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}

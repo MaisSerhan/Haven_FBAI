@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap');
+@import url('../../Pregnant/src/Pregnant.css');
+
+.hero-img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 34px;
+    color: #630565;
+    font-family: 'Satisfy', cursive;
+    margin-bottom: 10px;
+}
+
+.hero-text {
+    font-size: 20px;
+    color: #333;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* صناديق المحتوى */
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.content-box {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.content-box:hover {
+    transform: translateY(-5px);
+}
+
+.content-box h3 {
+    font-size: 24px;
+    color: #FF0057;
+    margin-bottom: 15px;
+}
+
+.content-box p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* النصائح الغذائية */
+.nutrition-tips {
+    text-align: right;
+    list-style: none;
+    padding: 0;
+}
+
+.nutrition-tips li {
+    font-size: 18px;
+    padding: 8px 0;
+    color: #333;
+}
+
+.mt-3 {
+    margin-top: 10px;
+}
+
+
+p {
+  font-size: 16px;
+  color: #444;
+  margin-top: 10px;
+}
+

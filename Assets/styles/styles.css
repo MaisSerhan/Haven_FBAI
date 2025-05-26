@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap');
+:root {
+    --prim-col: #FF0057; /* الزهري الرئيسي */
+    --sec-col: #ff009d; /* الزهري الفرعي */
+    --a-col: #ff82ac; 
+    --background: #FEDDF7;
+    --prim-backg-col: #ffd3e4; /* الخلفية الاقوى */
+    --sec-backg-col: rgba(255, 255, 255, 0.7); /* الخلفية الخفيفة */
+    --brownpink: #aa506e;
+    --move: #630565;
+    --red-but: #FF0057;
+    --h-red-but: #d9044f;
+    --dropdown-foucs: #ffc1d685;
+    --logo: rgba(255, 63, 126, 0.5);
+    --login: #fe366d;
+    --pink-light: #f9bbe6;   
+    --pink-medium: #f29ec8;  
+    --pink-dark: #f453ad;    
+    --pink-deep: #f20b97;    
+    --white: #ffffff;
+    --text-color: #333333;
+    --accent-color: #f88379; 
+  }

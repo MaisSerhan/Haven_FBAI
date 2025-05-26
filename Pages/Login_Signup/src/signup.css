@@ -1,0 +1,172 @@
+@import url(../../../Assets/styles/styles.css);
+/* إعداد الصفحة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    background-color: var(--background);
+    direction: rtl;
+    text-align: right;
+}
+
+.mx-auto {
+    margin-left: 42% !important;
+}
+
+/* تصميم الحاوية */
+.container {
+    background: linear-gradient(to bottom right, #ff7e5f, #ff3f7e);
+    width: 40%;
+    padding: 30px;
+    border-radius: 27px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.form-box {
+      background: #fff;
+      padding: 30px;
+      margin-top: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: auto;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+.inline-flex{
+    display:  inline-flex;
+    margin-left: 5px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #ff3f7e;
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #ff3f7e;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e9366d;
+}
+
+a {
+    text-decoration: none;
+    color: #ff3f7e;
+    font-size: 14px;
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.toggle-password {
+    background-color: white;
+    padding-top: 0px;
+    position: absolute;
+    left: 1px;
+    top: 63%;
+    height: 17px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.toggle-password:hover {
+    background-color: white;
+}
+/* تنسيق القائمة المنسدلة */
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* تنسيق حقل رفع الصورة */
+input[type="file"] {
+    font-size: 14px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 28%;
+    margin: auto;
+    width: 100%;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+select:focus {
+    border-color: #ff3f7e;
+    outline: none;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 55%;
+    }
+}
+@media (max-width: 900px) {
+    .container {
+        width: 70%;
+    }
+}
+@media (max-width: 600px) {
+.me-5{
+    margin-right: 0px !important;
+}
+}
+@media (max-width: 450px) {
+.container {
+    background: linear-gradient(to bottom right, #ff7e5f, #ff3f7e);
+    width: 331px;
+    padding: 20px
+}
+
+}

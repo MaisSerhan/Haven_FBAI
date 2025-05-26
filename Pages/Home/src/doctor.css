@@ -1,0 +1,37 @@
+@import url(../../Pregnant/src/Pregnant.css);
+
+.full-bg {
+    background-image: url(https://ik.imagekit.io/cywqg5brs/imagesHaven/palestine.png?updatedAt=1746030056392);
+    background-size: 100% 105%;
+}   
+.stages-buttons a {
+    width: 120px;
+}
+.left-content {
+    padding: 194px 290px;
+}
+@media (max-width: 750px) {
+    .left-content {
+        padding: 241px 46%;
+    }
+}
+@media (max-width: 380px) {
+    .full-bg {
+        background-image:none
+    }
+    .full-bg {
+        padding-top: 58vh !important;
+        padding-bottom: 58vh !important;
+    }
+    .stages-buttons a {
+        width: 80%;
+    }
+    .left-content {
+        padding: 363px 46%;
+    }
+}
+@media (max-width: 320px) {
+    .left-content {
+        padding: 382px 20%;
+    }
+}

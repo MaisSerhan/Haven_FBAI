@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>حجز موعد عند الطبيب</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../src/app.css">
+  <link rel="shortcut icon" href="https://github.com/MaisSerhan/Haven/blob/main/Assets/images/HalfTranLogo.png?raw=true">
+</head>
+<body class="container mt-5">
+  <h2 class="mb-4 text-center">➕ حجز موعد جديد عند الطبيب</h2>
+
+  <form action="saveAppointment.php" method="POST">
+
+    <!-- اختيار التخصص -->
+    <div class="mb-3">
+      <label for="specialty" class="form-label">اختر التخصص</label>
+      <select class="form-select" id="specialty" name="specialty" required>
+        <option value="" disabled selected>-- اختر التخصص --</option>
+        <option value="النساء والولادة">النساء والولادة</option>
+        <option value="الأطفال">الأطفال</option>
+      </select>
+    </div>
+
+    <!-- اختيار المدينة -->
+    <div class="mb-3">
+      <label for="city" class="form-label">اختر المدينة</label>
+      <select class="form-select" id="city" name="city" required>
+        <option value="" disabled selected>-- اختر المدينة --</option>
+        <option value="رام الله والبيرة">رام الله والبيرة</option>
+        <option value="الخليل">الخليل</option>
+        <option value="نابلس">نابلس</option>
+        <option value="طولكرم">طولكرم</option>
+        <option value="بيت لحم">بيت لحم</option>
+        <option value="جنين">جنين</option>
+        <option value="القدس">القدس</option>
+        <option value="غزة">غزة</option>
+        <option value="أريحا">أريحا</option>
+        <option value="طوباس">طوباس</option>
+      </select>
+    </div>
+
+    <!-- اختيار الطبيب -->
+    <div class="mb-3">
+      <label for="doctor" class="form-label">اختر الطبيب</label>
+      <select class="form-select" id="doctor" name="doctor" required>
+        <option value="" disabled selected>-- اختر الطبيب --</option>
+      </select>
+    </div>
+
+    <!-- اسم المريض -->
+    <div class="mb-3">
+      <label for="patient" class="form-label">اسم المريض</label>
+      <input type="text" class="form-control" id="patient" name="patient" required>
+    </div>
+
+    <!-- رقم الهاتف -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">رقم الجوال</label>
+      <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" placeholder="05XXXXXXXX" required>
+      <small class="form-text text-muted">أدخل رقم جوال مكون من 10 أرقام.</small>
+    </div>
+
+    <!-- التاريخ والوقت -->
+    <div class="mb-3">
+      <label for="date" class="form-label">تاريخ الموعد</label>
+      <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="start_time" class="form-label">الوقت (بداية الموعد)</label>
+      <input type="time" class="form-control" id="start_time" name="start_time" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="end_time" class="form-label">الوقت (نهاية الموعد)</label>
+      <input type="time" class="form-control" id="end_time" name="end_time" required>
+    </div>
+
+    <!-- أزرار -->
+    <div class="d-flex justify-content-between">
+      <a href="./userManApp.html" class="btn btn-secondary">🔙 رجوع</a>
+      <button type="submit" class="btn btn-success">💾 حفظ الموعد</button>
+    </div>
+  </form>
+
+  <!-- JavaScript لتحديث قائمة الأطباء حسب التخصص والمدينة -->
+  <script>
+    const doctorOptions = {
+      "النساء والولادة": {
+        "رام الله والبيرة": ["د. هدى السبيعي", "د. نجلاء العتيبي"],
+        "الخليل": ["د. فاطمة الزهراني", "د. ريم النفيعي"],
+        "نابلس": ["د. سارة أبو عيشة", "د. منى حمدان"],
+        "طولكرم": ["د. ليلى شحادة", "د. هند قاسم"],
+        "بيت لحم": ["د. أميرة عابد", "د. رنا المصري"],
+        "جنين": ["د. سميحة النجار", "د. أحمد القاضي"],
+        "القدس": ["د. نور محمد", "د. هالة الجمل"],
+        "غزة": ["د. سعاد رمضان", "د. طارق أبو زيد"],
+        "أريحا": ["د. مريم أبو زيد", "د. فاطمة عبد الله"],
+        "طوباس": ["د. هالة مصطفى", "د. سعيد عرفات"]
+      },
+      "الأطفال": {
+        "رام الله والبيرة": ["د. عبدالله الحربي", "د. منى القحطاني"],
+        "الخليل": ["د. سامي المالكي", "د. ليلى الشمراني"],
+        "نابلس": ["د. حسن الجابري", "د. مروة شعلان"],
+        "طولكرم": ["د. علي الجمل", "د. جمانة الشامي"],
+        "بيت لحم": ["د. سارة الحاج", "د. محمد زيدان"],
+        "جنين": ["د. سمير عودة", "د. نادية أبو هلال"],
+        "القدس": ["د. عادل الكيلاني", "د. بسمة ناصر"],
+        "غزة": ["د. ياسر الزعبي", "د. آية الشرفا"],
+        "أريحا": ["د. عمر حمدان", "د. فاطمة قاسم"],
+        "طوباس": ["د. سامر شحادة", "د. ياسمين عوض"]
+      }
+    };
+
+    const specialtySelect = document.getElementById("specialty");
+    const citySelect = document.getElementById("city");
+    const doctorSelect = document.getElementById("doctor");
+
+    function updateDoctors() {
+      const specialty = specialtySelect.value;
+      const city = citySelect.value;
+      doctorSelect.innerHTML = `<option value="" disabled selected>-- اختر الطبيب --</option>`;
+      if (specialty && city && doctorOptions[specialty] && doctorOptions[specialty][city]) {
+        doctorOptions[specialty][city].forEach(doctor => {
+          const option = document.createElement("option");
+          option.value = doctor;
+          option.textContent = doctor;
+          doctorSelect.appendChild(option);
+        });
+      }
+    }
+
+    specialtySelect.addEventListener("change", updateDoctors);
+    citySelect.addEventListener("change", updateDoctors);
+  </script>
+</body>
+</html>
