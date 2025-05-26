@@ -37,3 +37,4 @@ Project structure:
 |   Assets/                              // folder Assets For Common Front_end elem
 |_
 ```
+
