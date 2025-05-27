@@ -25,8 +25,9 @@
 
 ## 🌸 Introduction
 
-**Haven** started as a graduation project at **Palestine Technical University – Kadoorie**, with the vision of **empowering parents**. Today, it is a comprehensive online platform that supports motherhood from **pregnancy to the child's third year**, providing accurate information and fostering a supportive community.
-
+**Haven** started as a graduation project at<a href=https://ptuk.edu.ps/ar/> **Palestine Technical University – Kadoorie**<img src="https://ptuk.edu.ps/assets/images/logo-circle.png" height="50px"></a>, with the vision of **empowering parents**. 
+<br>
+Today, it is a comprehensive online platform that supports motherhood from **pregnancy to the child's third year**, providing accurate information and fostering a supportive community.
 ---
 
 ## 👩‍💻 Team Members
