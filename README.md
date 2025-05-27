@@ -32,10 +32,10 @@ Today, it is a comprehensive online platform that supports motherhood from **pre
 
 ## 👩‍💻 Team Members
 
-- **Mais Sarhan** 🧑‍🎓  
-- **Aya Amer** 🧑‍🎓  
-- **Heba Basheer** 🧑‍🎓 
-- **Maryam Mohammad** 🧑‍🎓  
+- **Mais Sarhan** 👑🧑‍🎓 
+- **Aya Amer** ⭐🧑‍🎓  
+- **Heba Basheer** ⭐🧑‍🎓 
+- **Maryam Mohammad** ⭐🧑‍🎓  
 - **Supervisor : Dr. Thaer Samar** 👨‍💼
 
 
