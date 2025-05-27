@@ -128,3 +128,11 @@ python app.py
 [SRS Document Link](#)
 
 ## Powerpoint Presentation 🧑‍🏫
+---
+
+<p align="center" dir="rtl">
+  © جميع حقوق الطبع محفوظة 2025
+  <br>
+  © All rights reserved 2025
+</p>
+
