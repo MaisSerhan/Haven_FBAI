@@ -1,40 +1,130 @@
-# Haven
-```
-run it Locally
-C:\Users\USER\OneDrive\Documents\Haven-main-AI\Haven_AI>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
+  <img src="https://github.com/MaisSerhan/Haven_FBAI/blob/main/Assets/images/HalfTranLogo.png?raw=true" width="86px" alt="Haven Logo" />
+  <h1 style="margin: 0; padding-top: 10px;">Haven</h1>
+</div>
 
-python app.py :  http://127.0.0.1:8800/
+<div dir="rtl" align="center" style="font-family: 'Amiri', serif; font-size: 22px; line-height: 1.8; margin-top: 10px;">
+بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ 
 
-C:\Users\USER\OneDrive\Documents\Haven-main-AI>
+<span style="font-size: 18px; color: #666;">{ وَكَانَ فَضْلُ ٱللَّهِ عَلَيْكَ عَظِيمًا }</span>
+</div>
 
-node server.js : http://localhost:3000/
-```
-```
-AI Model : https://github.com/jcdavid21/infant_cry_classification
-data-set use : https://www.kaggle.com/datasets/warcoder/infant-cry-audio-corpus
-data-set test : https://github.com/gveres/donateacry-corpus/tree/master 
-```
-```
-publish
-Git-Hub : https://github.com/MaisSerhan/Haven
-server 
-AI and python : https://devcenter.heroku.com/ 
-Front end : https://haven-peach.vercel.app/
-Backe end : https://render.com/ 
 
-connected by the link.
-```
+---
+## Table of Contents
+
+- [Introduction](#🌸-introduction) 🌸 
+- [Team Members](#👩‍💻-team-members) 👩‍💻
+- [Why The Name "Haven"](#why-the-name-haven❓)❓
+- [Project Structure](#📁-project-structure) 📁
+- [Project Components](#🧩-project-components) 🧩
+- [AI Model](#ai-and-ml-🧠) 📊
+- [Running the Project](#run-the-project-locally-🚀) 🚀 
+- [SRS Document 📄](#srs-document-📄)
+- [Powerpoint Presentation 🧑‍🏫](#powerpoint-presentation-🧑‍🏫)
+
+## 🌸 Introduction
+
+**Haven** started as a graduation project at **Palestine Technical University – Kadoorie**, with the vision of **empowering parents**. Today, it is a comprehensive online platform that supports motherhood from **pregnancy to the child's third year**, providing accurate information and fostering a supportive community.
+
+---
+
+## 👩‍💻 Team Members
+
+- **Mais Sarhan** 🧑‍🎓  
+- **Aya Amer** 🧑‍🎓  
+- **Heba Basheer** 🧑‍🎓 
+- **Maryam Mohammad** 🧑‍🎓  
+- **Supervisor : Dr. Thaer Samar** 👨‍💼
+
+
+---
+
+## Why The Name Haven❓
+
+
+A **mother is a refuge for everyone** 👩‍👧‍👦💖 and **'Haven' means refuge and shelter** 🏡✨ — which will be a **refuge for a mother** 🤰❤️.
+
+
+---
+## 📁 Project Structure
 
 ```
 Project structure: 
-│   index.html                           // file for main page
-│   README.md                            // file README File
-│   server.js                            // file open server for main page
-|   Haven_AI/                            // folder for AI Model
-|   Pages/                               // folder Pages for Front-End
-|   SoundTest/                           // folder have sound to test AI model
-|   Haven_Backend-main/                  // folder For Back end in node js
-|   Assets/                              // folder Assets For Common Front_end elem
+├─── index.html                           // file for main page
+├─── README.md                            // file README File
+├─── server.js                            // file open server for main page
+├─── Haven_AI/                            // folder for AI Model
+├─── Pages/                               // folder Pages for Front-End
+├─── SoundTest/                           // folder have sound to test AI model
+├─── Haven_Backend-main/                  // folder For Back end in node js
+├─── Assets/                              // folder Assets For Common Front_end elem
 |_
 ```
+## 🧩 Project Components
 
+- [Front-End](#front-end-🖥️) 🖥️
+- [Back-End](#back-end-🔧) 🔧
+- [Database 🗃️](#database-🗃️ )
+- [AI and Machine Learning](#ai-and-ml-🧠) 🧠
+
+
+---
+
+## Front-End 🖥️
+
+**Languages ​​and technologies used:**  
+`HTML`, `CSS`, `JavaScript`, `Bootstrap`
+
+---
+
+## Back-End 🔧
+
+**Languages ​​and technologies used:**  
+`Node.js`
+
+---
+
+## Database 🗃️ 
+
+**Database Engine:**  
+`SQL`
+
+---
+## AI And ML 🧠
+
+**Languages ​​and technologies used:**  `Python`
+
+**Languages ​​and technologies used:**  `os`, `numpy`, `pandas`, `matplotlib`, `sklearn`, `tensorflow`, `flask`, `xgboost`.
+
+- **Artificial intelligence model:**  
+  [infant_cry_classification (GitHub)](https://github.com/jcdavid21/infant_cry_classification)
+
+- **Training data:**  
+  [Infant Cry Audio Corpus (Kaggle)](https://www.kaggle.com/datasets/warcoder/infant-cry-audio-corpus)
+
+- **Test data:**  
+  [Donate a Cry Corpus (GitHub)](https://github.com/gveres/donateacry-corpus/tree/master)
+
+---
+
+## Run the project locally 🚀
+
+**Frontend Server:**
+```bash
+cd Haven_FBAI/
+node server.js
+http://localhost:3000/
+```
+**AI Model:**
+```bash
+cd Haven_FBAI/Haven_AI/
+python app.py
+```
+
+
+##  SRS Document 📄
+
+[SRS Document Link](#)
+
+## Powerpoint Presentation 🧑‍🏫
