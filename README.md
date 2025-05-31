@@ -51,7 +51,7 @@ A **mother is a refuge for everyone** 👩‍👧‍👦💖 and **'Haven' means
 ## 📁 Project Structure
 
 ```
-Project structure: 
+Haven_FBAI/ 
 ├─── index.html                           // file for main page
 ├─── README.md                            // file README File
 ├─── server.js                            // file open server for main page
@@ -60,7 +60,6 @@ Project structure:
 ├─── SoundTest/                           // folder have sound to test AI model
 ├─── Haven_Backend-main/                  // folder For Back end in node js
 ├─── Assets/                              // folder Assets For Common Front_end elem
-|_
 ```
 ## 🧩 Project Components
 
