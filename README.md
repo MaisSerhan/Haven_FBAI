@@ -70,9 +70,6 @@ Haven_FBAI/
 
 
 ---
-- [Front-End](#front-end)
-
-
 
 ## Front-End 🖥️
 
