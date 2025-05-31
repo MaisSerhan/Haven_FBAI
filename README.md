@@ -1,4 +1,4 @@
-<div style="text-align: center; gap: 10px;">
+<div style="margin: 0 40%;">
   <img src="https://github.com/MaisSerhan/Haven_FBAI/blob/main/Assets/images/HalfTranLogo.png?raw=true" width="86px" alt="Haven Logo" />
   <h1 style="margin: 0;">Haven</h1>
 </div>
