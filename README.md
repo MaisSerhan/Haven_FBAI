@@ -1,6 +1,6 @@
-<div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
+<div style="text-align: center; gap: 10px;">
   <img src="https://github.com/MaisSerhan/Haven_FBAI/blob/main/Assets/images/HalfTranLogo.png?raw=true" width="86px" alt="Haven Logo" />
-  <h1 style="margin: 0; padding-top: 10px;">Haven</h1>
+  <h1 style="margin: 0;">Haven</h1>
 </div>
 
 <div dir="rtl" align="center" style="font-family: 'Amiri', serif; font-size: 22px; line-height: 1.8; margin-top: 10px;">
