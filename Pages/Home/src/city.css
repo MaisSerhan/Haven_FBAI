@@ -1,0 +1,60 @@
+@import url(../../../Assets/styles/navbar.css);
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background);
+    margin: 20px;
+    color: var(--text-color);
+}
+
+h1 {
+    text-align: center;
+    color: var(--move);
+    font-family: 'Satisfy', cursive;
+    font-size: 2.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--sec-backg-col);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid var(--pink-light);
+    padding: 10px 15px;
+    text-align: right;
+}
+
+th {
+    background-color: var(--pink-dark);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: var(--prim-backg-col);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background-color: var(--sec-backg-col);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.btn-app {
+    background-color: var(--red-but);
+    color: var(--white);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-app:hover {
+    background-color: var(--h-red-but);
+}

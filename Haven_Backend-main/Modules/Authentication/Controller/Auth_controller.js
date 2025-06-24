@@ -19,6 +19,12 @@ const loginUser = async (req, res) => {
                 user_id,
                 email: user.email,
                 role: user.role,
+                level: user.level,
+                name: user.name,
+                profile_image_path: user.profile_image_path,
+                // إضافة بيانات الحمل هنا
+                pregnancy_month: user.pregnancy_month, 
+                last_period_date: user.last_period_date, 
             },
             token,
         });
@@ -29,7 +35,8 @@ const loginUser = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-    const { name, email, password, city_id, level, role } = req.body;
+    // إضافة last_period_date و pregnancy_month إلى destructuring
+    const { name, email, password, city_id, level, role, last_period_date, pregnancy_month } = req.body;
 
     const profile_image = req.file
         ? {
@@ -42,7 +49,18 @@ const registerUser = async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = await register(name, email, hashedPassword, city_id, level, role, profile_image);
+        // تمرير last_period_date و pregnancy_month إلى دالة الخدمة 'register'
+        const newUser = await register(
+            name, 
+            email, 
+            hashedPassword, 
+            city_id, 
+            level, 
+            role, 
+            profile_image,
+            last_period_date, // إضافة تاريخ آخر دورة شهرية
+            pregnancy_month // إضافة شهر الحمل
+        );
 
         const token = jwt.sign(
             { user_id: newUser.user_id, email: newUser.email, role: newUser.role },
@@ -54,6 +72,12 @@ const registerUser = async (req, res) => {
                 user_id: newUser.user_id,
                 email: newUser.email,
                 role: newUser.role,
+                name: newUser.name,
+                level: newUser.level, // تأكد من أن مستوى المستخدم يتم إرجاعه أيضًا
+                profile_image_path: newUser.profile_image_path, // تأكد من مسار الصورة
+                // إضافة بيانات الحمل إلى الاستجابة
+                pregnancy_month: newUser.pregnancy_month, 
+                last_period_date: newUser.last_period_date, 
             },
             token
         });

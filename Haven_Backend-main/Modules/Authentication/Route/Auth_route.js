@@ -10,3 +10,4 @@ router.post('/login' , loginValidation , validate , loginUser)
 router.post('/userRegister' , upload.single('file'), UserRegisterValidation , validate , registerUser)
 router.post('/doctorRegister' , upload.single('file'), DoctorRegisterValidation , validate , registerDoctor)
 module.exports = router;
+ 

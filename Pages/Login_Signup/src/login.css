@@ -78,7 +78,8 @@ h2 {
 
 /* زر تسجيل الدخول */
 .login-btn {
-    background-color: #f84da0;
+    background-color: #ff3f7e;
+    margin-top: 11px;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -97,10 +98,10 @@ h2 {
 }
 .toggle-password {
     background-color: white;
-    padding-top: 0px;
+    padding: 0px 13px 28px 7px;
     position: absolute;
     left: 1px;
-    top: 41%;
+    top: 71%;
 }
 
 @media (max-width: 600px) {

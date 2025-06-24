@@ -10,7 +10,7 @@ function togglePassword(fieldId, button) {
     event.preventDefault();
 }
 function togglePregnancyMonths() {
-    const stageSelect = document.getElementById('stage');
+    const stageSelect = document.getElementById('level');
     const monthBox = document.getElementById('monthBox');
     
     if (stageSelect.value === 'حمل') {

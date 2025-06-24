@@ -1,12 +1,3 @@
-// Handle Page Load & Language Persistence
-document.addEventListener('DOMContentLoaded', function () {
-    loadHTML('../../Assets/Html/navbar.html', 'navbar-container', () => {
-        publicationLink ();
-    });
-    loadHTML('../../Assets/Html/footer.html', 'footer-container', () => {
-    });
-  });
-
 function publicationLink () {
     const publicationLink = document.querySelector('.i18n-publications');
     console.log(publicationLink)

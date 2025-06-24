@@ -20,7 +20,10 @@
                 </li>
                 <li class="nav-item dropdown pt-1">
                     <a class="dropdown-toggle i18n-stages text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">المراحل</a>
-                    <ul class="dropdown-menu">
+                    <!-- هذا هو الـ ID الضروري الذي تتم الإشارة إليه في NavFooter.js -->
+                    <ul class="dropdown-menu" id="stages-dropdown-menu">
+                        <!-- هذه العناصر سيتم إدارتها بواسطة JavaScript في NavFooter.js -->
+                        <!-- يتم وضعها هنا كـ fallback أو كمرجع للهيكل الافتراضي -->
                         <li><a class="dropdown-item i18n-pregnancy" href="../../Pages/Pregnant/Pregnant.html">مرحلة الحمل</a></li>
                         <li><a class="dropdown-item i18n-birth" href="../../Pages/Birth/Birth.html">مرحلة الولادة</a></li>
                         <li><a class="dropdown-item i18n-year1" href="../../Pages/Year1/oneYear.html">مرحلة السنة الاولى من الطفل</a></li>
@@ -34,20 +37,10 @@
                     <a class="nav-link i18n-blog" href="../../Pages/Home/doctor.html">الأطباء</a>
                 </li>
             </ul>
-           <ul class="navbar-nav ms-auto fs-4">
-             <!--    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fs-6 mt-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="language">العربية</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#" onclick="updateUI('ar','العربية')">العربية</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="updateUI('en','English')">English</a></li>
-                    </ul>
-                </li>-->
-                <li class="nav-item auth-dropdown">
-                    <a class="" href="#home"><button type="button" class="btn btn-outline-danger fs-5 i18n-join">انضم إلينا</button></a>
-                    <div class="auth-dropdown-content">
-                        <a href="../../Pages/Login_Signup/login.html" id="nav-login">تسجيل الدخول</a>
-                        <a href="../../Pages/Login_Signup/signup.html" id="nav-signup">انشاء حساب</a>
-                    </div>
+            <ul class="navbar-nav ms-auto fs-4">
+                <!-- هذا هو الجزء الديناميكي لحالة تسجيل الدخول/الخروج -->
+                <li class="nav-item" id="auth-links-container">
+                    <!-- المحتوى سيتم تحميله بواسطة JavaScript في NavFooter.js -->
                 </li>
             </ul>
         </div>

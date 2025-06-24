@@ -125,7 +125,7 @@ python app.py
 
 ##  SRS Document 📄
 
-[SRS Document Link](#)
+[SRS Document Link](SRS/Graduation%20Project.pdf)
 
 ## Powerpoint Presentation 🧑‍🏫
 ---

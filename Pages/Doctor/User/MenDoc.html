@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>🩺 قائمة الأطباء</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap RTL -->
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="../src/app.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://github.com/MaisSerhan/Haven/blob/main/Assets/images/HalfTranLogo.png?raw=true">
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--background);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .page-title {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--prim-col);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #ffe0e6;
+    }
+
+    .form-control {
+      margin-bottom: 10px;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background-color: var(--red-but);
+      border-color: var(--red-but);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--h-red-but);
+      border-color: var(--h-red-but);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="page-title">قائمة الأطباء</h1>
+
+    <form class="form-inline mb-3">
+      <select class="form-control mr-2" name="city">
+        <option value="">اختر المدينة</option>
+        <option>رام الله والبيرة</option>
+        <option>الخليل</option>
+        <option>نابلس</option>
+        <option>طولكرم</option>
+        <option>بيت لحم</option>
+        <option>جنين</option>
+        <option>القدس</option>
+        <option>أريحا</option>
+        <option>طوباس</option>
+      </select>
+      <select class="form-control mr-2" name="specialty">
+        <option value="">اختر التخصص</option>
+        <option>النسائية والتوليد</option>
+        <option>الأطفال</option>
+      </select>
+      <input type="text" class="form-control mr-2" placeholder="ابحث باسم الطبيب">
+      <button class="btn btn-primary">🔍 بحث</button>
+    </form>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>اسم الطبيب</th>
+          <th>العنوان</th>
+          <th>رقم الهاتف</th>
+          <th>التخصص</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>د. يارا نضال سلطان</td>
+          <td>الخليل - مستشفى جمعية الهلال الأحمر الفلسطيني - شارع واد التفاح</td>
+          <td>022220101</td>
+          <td>النسائية والتوليد</td>
+        </tr>
+        <tr>
+          <td>د. يزن شرحبيل الرفاعي</td>
+          <td>الخليل - مستشفى جمعية الهلال الأحمر الفلسطيني - شارع واد التفاح</td>
+          <td>022220101</td>
+          <td>النسائية والتوليد</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav aria-label="pagination">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled"><span class="page-link">السابق</span></li>
+        <li class="page-item active"><span class="page-link">1</span></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">التالي</a></li>
+      </ul>
+    </nav>
+
+    <div class="text-center back-btn">
+      <a href="../../Home/doctor.html" class="btn btn-secondary">⬅️ رجوع</a>
+    </div>
+  </div>
+</body>
+</html>

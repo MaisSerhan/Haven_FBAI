@@ -241,5 +241,54 @@
     <div id="footer-container"></div>
     <script src="./Assets/scripts/main.js"></script>
     <script src="./Assets/scripts/NavFooter.js"></script>
+    <script>
+        function publicationLink () {
+            const token = localStorage.getItem('token');
+            const userLevelRaw = localStorage.getItem('user_level'); 
+            const userLevel = userLevelRaw ? userLevelRaw.trim() : userLevelRaw; 
+            if (userLevel) {
+                console.log(userLevel);
+                const carousel_prev = document.querySelector('#front .carousel-control-prev');
+                const carousel_next = document.querySelector('#front .carousel-control-next');
+                const carousel_inde = document.querySelector('#front .carousel-indicators'); 
+                carousel_prev.style.display = 'none';
+                carousel_next.style.display = 'none';
+                carousel_inde.style.display = 'none';
+                console.log(carousel_next);
+
+                if(userLevel=='حمل'){
+                    const items = document.querySelectorAll('.#front carousel-item');
+                    // إزالة الكلاس "active" من جميع الشرائح (أو فقط من الأولى إذا كنت متأكد أنها الوحيدة النشطة)
+                    items.forEach(item => item.classList.remove('active'));
+                    // إضافة الكلاس "active" إلى الشريحة الثانية (رقم 1 لأن التعداد يبدأ من 0)
+                    items[1].classList.add('active');
+                }
+                if(userLevel=='ولادة'){
+                    const items = document.querySelectorAll('.#front carousel-item');
+                    // إزالة الكلاس "active" من جميع الشرائح (أو فقط من الأولى إذا كنت متأكد أنها الوحيدة النشطة)
+                    items.forEach(item => item.classList.remove('active'));
+                    // إضافة الكلاس "active" إلى الشريحة الثانية (رقم 1 لأن التعداد يبدأ من 0)
+                    items[2].classList.add('active');
+                }
+                if(userLevel=='السنة الأولى من طفلك'){
+                    const items = document.querySelectorAll('.#front carousel-item');
+                    // إزالة الكلاس "active" من جميع الشرائح (أو فقط من الأولى إذا كنت متأكد أنها الوحيدة النشطة)
+                    items.forEach(item => item.classList.remove('active'));
+                    // إضافة الكلاس "active" إلى الشريحة الثانية (رقم 1 لأن التعداد يبدأ من 0)
+                    items[3].classList.add('active');
+                }
+                if(userLevel=='السنة الثانية من طفلك'){
+                    const items = document.querySelectorAll('.#front carousel-item');
+                    // إزالة الكلاس "active" من جميع الشرائح (أو فقط من الأولى إذا كنت متأكد أنها الوحيدة النشطة)
+                    items.forEach(item => item.classList.remove('active'));
+                    // إضافة الكلاس "active" إلى الشريحة الثانية (رقم 1 لأن التعداد يبدأ من 0)
+                    items[4].classList.add('active');
+                }
+            }
+            if (token) {
+            console.log(token)
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,75 +1,400 @@
+<!--لوحة التحكم بالاطباء من خلال الادمن-->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>لوحة التحكم - إدارة الأطباء</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-  <!-- Bootstrap RTL -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./src/admin.css">
-  <link rel="shortcut icon" href="https://github.com/MaisSerhan/Haven/blob/main/Assets/images/HalfTranLogo.png?raw=true">
-  <style>
-    .card {
-      background-color: #ffffff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - إدارة الأطباء</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/admin.css"> 
+    <link rel="shortcut icon" href="https://github.com/MaisSerhan/Haven/blob/main/Assets/images/HalfTranLogo.png?raw=true">
+    <style>
+        /* الأنماط الموجودة لديك في الملف الأصلي */
+        body {
+            padding-bottom: 50px; /* لإضافة مسافة أسفل الصفحة */
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .table img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        /* أنماط بسيطة لصندوق الرسائل وزر تسجيل الخروج، لا تغير التصميم الأساسي */
+        .message-alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: none; /* مخفي افتراضياً */
+            text-align: right; /* محاذاة النص إلى اليمين في RTL */
+            /* إذا كان لديك كلاسات Bootstrap مثل alert-success, alert-danger، يمكنك استخدامها هنا */
+            /* مثال: background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; */
+        }
+        .logout-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px; /* ضع زر الخروج في اليسار في RTL */
+            z-index: 1000;
+        }
+        /* تصحيح المسافة في المودال لضمان التنسيق */
+        .modal-body .form-label {
+            margin-bottom: 0.5rem; /* مسافة بسيطة أسفل التسمية */
+        }
+        .modal-body .form-control {
+            margin-bottom: 1rem; /* مسافة أسفل حقول الإدخال */
+        }
+    </style>
 </head>
 <body class="container mt-5">
-  <h2 class="text-center mb-4">👨‍⚕️ لوحة التحكم - إدارة الأطباء</h2>
+    <button id="logoutButton" class="btn btn-danger logout-btn">تسجيل الخروج</button>
 
-  <!-- إضافة طبيب جديد -->
-  <div class="card mb-4 p-4">
-    <a href="../Login_Signup/DocSign.html" class="btn btn-success mb-3">➕ إضافة طبيب جديد</a>
-  </div>
+    <h2 class="text-center mb-4">👨‍⚕️ لوحة التحكم - إدارة الأطباء</h2>
 
-  <!-- قائمة الأطباء -->
-  <div class="card p-4">
-    <h5 class="mb-3">📋 قائمة الأطباء</h5>
-    <table class="table table-bordered text-center">
-      <thead class="table-light">
-        <tr>
-          <th>#</th>
-          <th>الاسم</th>
-          <th>التخصص</th>
-          <th>الجوال</th>
-          <th>البريد</th>
-          <th>المدينة</th>
-          <th>صورة البطاقة</th>
-          <th>خيارات</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- مثال بيانات -->
-        <tr>
-          <td>1</td>
-          <td>د. هدى السبيعي</td>
-          <td>النساء والولادة</td>
-          <td>0501234567</td>
-          <td>huda@example.com</td>
-          <td>نابلس</td>
-          <td><img src="https://png.pngtree.com/template/20191129/ourmid/pngtree-doctor-id-card-template-medical-identity-badge-image_335692.jpg" alt="بطاقة العمل" width="60"></td>
-          <td>
-            <a href="edit-user.html" class="btn btn-warning btn-sm"><button class="btn btn-sm btn-warning">✏️ تعديل</button></a>
-                    <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('هل أنت متأكد من حذف هذا المستخدم؟')"><button class="btn btn-sm btn-danger">🗑️ حذف</button></a>
-          </td>
-        </tr>
-        <tr>
-                <td>2</td>
-                <td>د. أحمد محمود</td>
-                <td>طبيب أطفال</td>
-                <td>0599123456</td>
-                <td>ahmed@example.com</td>
-                <td>طوباس</td>
-                <td><img src="https://png.pngtree.com/template/20191129/ourmid/pngtree-doctor-id-card-template-medical-identity-badge-image_335692.jpg" alt="أحمد محمود" class="user-img" width="60"></td>
-                <td>
-                    <a href="edit-user.html" class="btn btn-warning btn-sm"><button class="btn btn-sm btn-warning">✏️ تعديل</button></a>
-                    <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('هل أنت متأكد من حذف هذا المستخدم؟')"><button class="btn btn-sm btn-danger">🗑️ حذف</button></a>
-                </td>
-            </tr>
+    <div id="messageDisplay" class="message-alert"></div>
 
-        <!-- المزيد من الأطباء -->
-      </tbody>
-    </table>
-  </div>
+    <div class="card mb-4 p-4">
+        <a href="../Login_Signup/DocSign.html" class="btn btn-success mb-3">➕ إضافة طبيب جديد</a>
+    </div>
+
+    <div class="card p-4">
+        <h5 class="mb-3">📋 قائمة الأطباء</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover text-center" id="doctorsListTable">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>الاسم</th>
+                        <th>التخصص</th>
+                        <th>الجوال</th>
+                        <th>البريد</th>
+                        <th>المدينة</th>
+                        <th>الموقع</th> <th>صورة البطاقة</th>
+                        <th>خيارات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="9">جاري تحميل بيانات الأطباء...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editDoctorModal" tabindex="-1" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editDoctorModalLabel">تعديل بيانات الطبيب</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editDoctorForm" enctype="multipart/form-data">
+                        <input type="hidden" id="editDoctorId">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">الاسم</label>
+                            <input type="text" class="form-control" id="editName" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="editEmail" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMajor" class="form-label">التخصص</label>
+                            <select class="form-control" id="editMajor" name="major" required>
+                                <option value="نسائية وتوليد">نسائية وتوليد</option>
+                                <option value="طبيب أطفال">طبيب أطفال</option>
+                                </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPhone" class="form-label">الجوال</label>
+                            <input type="tel" class="form-control" id="editPhone" name="phone" required pattern="^\+?\d{8,15}$">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editCity" class="form-label">المدينة</label>
+                            <select class="form-control" id="editCity" name="city_id" required>
+                                </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editLocation" class="form-label">الموقع</label>
+                            <input type="text" class="form-control" id="editLocation" name="location" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDoctorImage" class="form-label">صورة البطاقة (اختياري)</label>
+                            <input type="file" class="form-control" id="editDoctorImage" name="doctor_image" accept="image/*">
+                            <img id="currentProfileImage" src="" alt="الصورة الحالية" class="mt-2" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+                        </div>
+                        <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">تأكيد الإجراء</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="confirmationMessage">
+                    هل أنت متأكد من رغبتك في تنفيذ هذا الإجراء؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-danger" id="confirmActionButton">تأكيد</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+   <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const doctorsTableBody = document.querySelector('#doctorsListTable tbody');
+            const editDoctorModal = new bootstrap.Modal(document.getElementById('editDoctorModal'));
+            const editDoctorForm = document.getElementById('editDoctorForm');
+            const currentProfileImage = document.getElementById('currentProfileImage');
+            const messageDisplay = document.getElementById('messageDisplay'); // صندوق الرسائل
+            const logoutButton = document.getElementById('logoutButton');
+            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+            const confirmationMessageElement = document.getElementById('confirmationMessage');
+            const confirmActionButton = document.getElementById('confirmActionButton');
+            const editCitySelect = document.getElementById('editCity');
+
+            let resolveConfirmationPromise; // Used to resolve the confirmation modal promise
+
+            const API_BASE_URL = 'http://localhost:3001/doctor'; // مسار API الصحيح للأطباء
+            const CITIES_API_URL = 'http://localhost:3001/city/getAll'; // نقطة نهاية جلب المدن
+            const AUTH_REDIRECT_URL = '../Login_Signup/login.html'; // URL لصفحة تسجيل الدخول
+
+            // دالة مساعدة لعرض الرسائل للمستخدم
+            function showMessage(message, type = 'error') {
+                messageDisplay.textContent = message;
+                messageDisplay.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+                messageDisplay.style.color = type === 'success' ? '#155724' : '#721c24';
+                messageDisplay.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+                messageDisplay.style.display = 'block';
+                setTimeout(() => {
+                    messageDisplay.style.display = 'none';
+                }, 5000); // إخفاء الرسالة بعد 5 ثوانٍ
+            }
+
+            // دالة مساعدة لعرض مودال التأكيد
+            function showConfirmation(message) {
+                confirmationMessageElement.textContent = message;
+                confirmationModal.show();
+                return new Promise((resolve) => {
+                    resolveConfirmationPromise = resolve;
+                });
+            }
+
+            confirmActionButton.addEventListener('click', () => {
+                if (resolveConfirmationPromise) {
+                    resolveConfirmationPromise(true);
+                    confirmationModal.hide();
+                }
+            });
+
+            // Handle modal close via X button or outside click
+            document.getElementById('confirmationModal').addEventListener('hide.bs.modal', () => {
+                if (resolveConfirmationPromise) {
+                    resolveConfirmationPromise(false); // Resolve with false if modal is dismissed without confirmation
+                    resolveConfirmationPromise = null; // Reset
+                }
+            });
+
+            // Helper function to build full image URL
+            const getFullImagePath = (filePath) => {
+                // افترض أن الخادم يخدم الملفات الثابتة من /uploads
+                if (filePath && !filePath.startsWith('http')) {
+                    // تأكد أن المسار في قاعدة البيانات لا يحتوي على 'uploads/' إذا كان مجلد الرفع هو 'uploads'
+                    // إذا كان المسار المخزن في DB هو فقط اسم الملف، فأضف '/uploads/'
+                    // إذا كان المسار المخزن في DB هو '/uploads/filename.jpg' فاستخدمه مباشرة
+                    return `http://localhost:3001${filePath.startsWith('/uploads/') ? '' : '/uploads/'}${filePath.replace(/\\/g, '/')}`; 
+                }
+                return filePath || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'; // Default placeholder
+            };
+
+            // Function to check user authentication and role
+            async function checkAuthentication() {
+                const token = localStorage.getItem('token');
+                const userRole = localStorage.getItem('role');
+                
+                if (!token || userRole !== 'admin') {
+                    showMessage('ليس لديك صلاحية الوصول كمسؤول. يرجى تسجيل الدخول.', 'error');
+                    setTimeout(() => {
+                        window.location.href = AUTH_REDIRECT_URL;
+                    }, 2000);
+                    return false;
+                }
+                return true;
+            }
+
+            //Function to fetch and populate cities for the dropdown
+            async function fetchCities() { 
+                try {
+                    const response = await fetch(CITIES_API_URL); // استخدام نقطة نهاية المدن الصحيحة
+                    if (!response.ok) {
+                        const errorResult = await response.json();
+                        throw new Error(errorResult.message || 'فشل جلب المدن.');
+                    }
+                    const result = await response.json(); // افتراض أن الرد هو { status: true, data: citiesArray }
+                    const cities = result.data || [];
+
+                    editCitySelect.innerHTML = '<option value="">-- اختر المدينة --</option>'; // إضافة خيار افتراضي
+                    cities.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.city_id;
+                        option.textContent = city.city_name;
+                        editCitySelect.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error('خطأ في جلب المدن:', error);
+                    showMessage('فشل في تحميل قائمة المدن: ' + error.message, 'error');
+                }
+            }
+            
+            //Function to fetch and populate Doctors
+            async function fetchDoctors() {
+                try {
+                    const token = localStorage.getItem("token"); // تأكد من أن التوكن محفوظ بعد تسجيل الدخول
+                    const response = await fetch(`${API_BASE_URL}/get`, {
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        }
+                       
+                    }); 
+                    if (!response.ok) {
+                        if (response.status === 401 || response.status === 403) {
+                            showMessage('جلسة تسجيل الدخول انتهت أو ليس لديك صلاحية. يرجى تسجيل الدخول مرة أخرى.', 'error');
+                            setTimeout(() => {
+                                window.location.href = AUTH_REDIRECT_URL;
+                            }, 2000);
+                        }
+                        const errorResult = await response.json();
+                        throw new Error(errorResult.message || `HTTP error! Status: ${response.status}`);
+                    }
+
+                    const result = await response.json();console.log(result);
+                    const doctors = result.results  || []; // Access the 'data' array
+                    console.log("Doctors fetched successfully:", doctors);
+                    populateDoctorsTable(doctors);
+
+                } catch (error) {
+                    console.error("Error fetching doctors:", error);
+                    showMessage('فشل في جلب الأطباء: ' + error.message, 'error');
+                }
+            }
+
+            // Function to populate the table with doctors data
+            function populateDoctorsTable(doctors) {
+                doctorsTableBody.innerHTML = ''; // Clear existing rows
+                console.log(doctors)
+                if (doctors && doctors.length > 0) {
+                    doctors.forEach((doctor, index) => {
+                        const row = doctorsTableBody.insertRow();
+                        const imageUrl = getFullImagePath(doctor.profile_image_path);
+                        
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${doctor.name || ''}</td>
+                            <td>${doctor.major || ''}</td>
+                            <td>${doctor.phone || ''}</td>
+                            <td>${doctor.email || ''}</td>
+                            <td>${doctor.city_name || 'غير معروف'}</td>
+                            <td>${doctor.location || ''}</td> <td><img src="${imageUrl}" alt="صورة الطبيب" onerror="this.onerror=null;this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png';"></td>
+                            <td>
+                                <a href="edit-user.html?id=${doctor.doctor_id}" class="btn btn-warning btn-sm">✏️ تعديل</a>
+                                <button class="btn btn-danger btn-sm delete-btn" data-id="${doctor.doctor_id}">🗑️ حذف</button>
+                            </td> 
+                        `;console.log('Doctor ID:', doctor.doctor_id);
+
+                    });
+                    addEventListenersToButtons(); // Add event listeners after populating
+                } else {
+                    doctorsTableBody.innerHTML = '<tr><td colspan="9">لا يوجد أطباء لعرضهم.</td></tr>';
+                }
+            }
+
+            // Function to add event listeners to edit and delete buttons
+            function addEventListenersToButtons() {
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', async (event) => {
+                        const doctorId = event.target.dataset.id;
+                        const confirmed = await showConfirmation('هل أنت متأكد من رغبتك في حذف هذا الطبيب؟ هذا الإجراء لا يمكن التراجع عنه.');
+                        if (confirmed) {
+                            deleteDoctor(doctorId);
+                        }
+                    });
+                });
+            }
+   
+            // Function to handle doctor deletion
+            async function deleteDoctor(doctorId) {
+                try {
+                    const token = localStorage.getItem('token');
+                    // استخدام مسار API الصحيح لحذف طبيب
+                    const response = await fetch(`${API_BASE_URL}/delete/${doctorId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.status === 401 || response.status === 403) {
+                        showMessage('جلسة تسجيل الدخول انتهت أو ليس لديك صلاحية. يرجى تسجيل الدخول مرة أخرى.', 'error');
+                        setTimeout(() => {
+                            window.location.href = AUTH_REDIRECT_URL;
+                        }, 2000);
+                        return;
+                    }
+
+                    if (!response.ok) {
+                        const errorResult = await response.json();
+                        throw new Error(errorResult.message || 'فشل حذف الطبيب.');
+                    }
+                    
+                    showMessage('تم حذف الطبيب بنجاح!', 'success');
+                    fetchDoctors(); // Refresh the table
+
+                } catch (error) {
+                    console.error('خطأ في حذف الطبيب:', error);
+                    showMessage('فشل في حذف الطبيب: ' + error.message, 'error');
+                }
+            }
+
+            // Event listener for logout button
+            logoutButton.addEventListener('click', () => {
+                localStorage.removeItem('token');
+                localStorage.removeItem('role'); // Also clear the role
+                window.location.href = AUTH_REDIRECT_URL;
+            });
+
+            // Initial checks and data fetches when the page loads
+            async function initializePage() {
+                // التحقق من المصادقة والدور قبل أي عملية جلب
+                const isAuthenticated = await checkAuthentication();
+                if (isAuthenticated) {
+                    await fetchCities(); // جلب المدن لمودال التعديل
+                    await fetchDoctors(); // جلب الأطباء
+                }
+            }
+
+            initializePage();
+        });
+    </script>
 </body>
 </html>

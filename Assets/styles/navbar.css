@@ -121,8 +121,12 @@ nav a{
 .auth-dropdown-content a:hover {
   background-color: var(--a-col);
 }
-
-
+#auth-links-container span{
+  direction: rtl;
+}
+li{
+    font-weight: bold !important;
+}
 @media (max-width: 1150px) {
     .auth-dropdown-content {
     }

@@ -1,0 +1,207 @@
+<!--الطبيب يضيف المواعيد المتاحة ليقوم المريض بالحجز-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>تحديد مواعيد الطبيب الأسبوعية</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #FF0057;       /* زهري قوي */
+      --secondary-color: #f29ec8;     /* زهري فاتح */
+      --background-color: #ffd3e4;    /* خلفية وردية خفيفة */
+      --text-color: #630565;          /* لون النص غامق */
+      --border-color: #f88379;        /* لون حدود */
+      --input-bg: #fff0f6;            /* خلفية الحقول */
+      --btn-bg: #FF0057;              /* لون أزرار */
+      --btn-hover-bg: #d9044f;        /* لون زر عند التمرير */
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: "Tajawal", sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 0, 87, 0.2);
+      margin-top: 40px;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 30px;
+    }
+
+    .time-input {
+      width: 130px;
+      margin: 0 5px;
+      background-color: var(--input-bg);
+      border: 1.5px solid var(--border-color);
+      border-radius: 6px;
+      padding: 5px;
+      color: var(--text-color);
+    }
+
+    .time-input:disabled {
+      background-color: #fce7f0;
+      color: #a98aa8;
+      border-color: #f5c4d2;
+    }
+
+    .day-row {
+      margin-bottom: 15px;
+      align-items: center;
+      display: flex;
+      gap: 10px;
+    }
+
+    label {
+      min-width: 60px;
+      font-weight: 600;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    button.btn-primary {
+      background-color: var(--btn-bg);
+      border-color: var(--btn-bg);
+      font-weight: 600;
+    }
+    button.btn-primary:hover {
+      background-color: var(--btn-hover-bg);
+      border-color: var(--btn-hover-bg);
+    }
+
+    /* زر الرجوع */
+    .back-btn {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="text-center">تحديد مواعيد الطبيب الأسبوعية</h2>
+
+    <form id="scheduleForm">
+      <div class="day-row">
+        <input type="checkbox" id="sat" name="days" value="sat" />
+        <label for="sat">السبت</label>
+        من
+        <input type="time" name="sat_start" class="time-input" disabled />
+        إلى
+        <input type="time" name="sat_end" class="time-input" disabled />
+      </div>
+
+      <div class="day-row">
+        <input type="checkbox" id="sun" name="days" value="sun" />
+        <label for="sun">الأحد</label>
+        من
+        <input type="time" name="sun_start" class="time-input" disabled />
+        إلى
+        <input type="time" name="sun_end" class="time-input" disabled />
+      </div>
+
+      <div class="day-row">
+        <input type="checkbox" id="mon" name="days" value="mon" />
+        <label for="mon">الاثنين</label>
+        من
+        <input type="time" name="mon_start" class="time-input" disabled />
+        إلى
+        <input type="time" name="mon_end" class="time-input" disabled />
+      </div>
+
+      <div class="day-row">
+        <input type="checkbox" id="tue" name="days" value="tue" />
+        <label for="tue">الثلاثاء</label>
+        من
+        <input type="time" name="tue_start" class="time-input" disabled />
+        إلى
+        <input type="time" name="tue_end" class="time-input" disabled />
+      </div>
+
+      <div class="day-row">
+        <input type="checkbox" id="wed" name="days" value="wed" />
+        <label for="wed">الأربعاء</label>
+        من
+        <input type="time" name="wed_start" class="time-input" disabled />
+        إلى
+        <input type="time" name="wed_end" class="time-input" disabled />
+      </div>
+
+      <div class="day-row">
+        <input type="checkbox" id="thu" name="days" value="thu" />
+        <label for="thu">الخميس</label>
+        من
+        <input type="time" name="thu_start" class="time-input" disabled />
+        إلى
+        <input type="time" name="thu_end" class="time-input" disabled />
+      </div>
+
+      <div class="day-row">
+        <input type="checkbox" id="fri" name="days" value="fri" />
+        <label for="fri">الجمعة</label>
+        من
+        <input type="time" name="fri_start" class="time-input" disabled />
+        إلى
+        <input type="time" name="fri_end" class="time-input" disabled />
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3">حفظ المواعيد</button>
+    </form>
+
+    <a href="./DoCal.html" class="btn btn-secondary back-btn" onclick="history.back()">⬅️ رجوع</a>
+
+  </div>
+
+  <script>
+    // تفعيل وتعطيل حقول الوقت عند اختيار الأيام
+    document.querySelectorAll('input[type="checkbox"][name="days"]').forEach(chk => {
+      chk.addEventListener('change', function() {
+        const day = this.value;
+        const startInput = document.querySelector(`input[name="${day}_start"]`);
+        const endInput = document.querySelector(`input[name="${day}_end"]`);
+        if (this.checked) {
+          startInput.disabled = false;
+          endInput.disabled = false;
+        } else {
+          startInput.disabled = true;
+          startInput.value = '';
+          endInput.disabled = true;
+          endInput.value = '';
+        }
+      });
+    });
+
+    // إرسال بيانات المواعيد
+    document.getElementById('scheduleForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const schedule = {};
+
+      formData.getAll('days').forEach(day => {
+        schedule[day] = {
+          start: formData.get(`${day}_start`),
+          end: formData.get(`${day}_end`),
+        };
+      });
+
+      console.log('جدول المواعيد:', schedule);
+
+      alert('تم حفظ المواعيد في وحدة التحكم (Console)');
+      // يمكنك إرسال البيانات للسيرفر هنا باستخدام fetch أو غيره
+    });
+  </script>
+
+</body>
+</html>

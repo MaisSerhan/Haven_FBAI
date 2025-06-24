@@ -1,13 +1,10 @@
+<!--تعديل بيانات الطبيب من خلال الادمن-->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>تعديل بيانات الطبيب</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-  <!-- Bootstrap RTL -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./src/admin.css">
-  <link rel="shortcut icon" href="https://github.com/MaisSerhan/Haven/blob/main/Assets/images/HalfTranLogo.png?raw=true">  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
   <style>
     .card {
       background-color: #ffffff;
@@ -22,60 +19,133 @@
 <body class="container mt-5">
   <div class="card">
     <h3 class="text-center mb-4">✏️ تعديل بيانات الطبيب</h3>
-    <form action="" method="POST" enctype="multipart/form-data">
-      <!-- معرف الطبيب (مخفي) -->
-      <input type="hidden" name="doctor_id" value="1">
+    <form enctype="multipart/form-data" id="doctorForm">
+      <input type="hidden" name="doctor_id" />
 
       <div class="mb-3">
-        <label for="doctorName" class="form-label">اسم الطبيب</label>
-        <input type="text" class="form-control" id="doctorName" name="doctorName" value="د. هدى السبيعي" required>
-      </div>
-
-      <div class="mb-3">
-        <label for="specialty" class="form-label">التخصص</label>
-        <select class="form-select" id="specialty" name="specialty" required>
-          <option value="النساء والولادة" selected>النساء والولادة</option>
-          <option value="الأطفال">الأطفال</option>
-        </select>
-      </div>
-
-      <div class="mb-3">
-        <label for="phone" class="form-label">رقم الجوال</label>
-        <input type="tel" class="form-control" id="phone" name="phone" value="0501234567" pattern="[0-9]{10}" required>
+        <label for="name" class="form-label">اسم الطبيب</label>
+        <input type="text" class="form-control" id="name" name="name" required />
       </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">البريد الإلكتروني</label>
-        <input type="email" class="form-control" id="email" name="email" value="huda@example.com" required>
+        <input type="email" class="form-control" id="email" name="email" required />
       </div>
 
-      <!-- المدينة (قائمة منسدلة) -->
       <div class="mb-3">
-        <label for="city" class="form-label">اختر مدينتك</label>
-        <select class="form-select" id="city" name="city" required>
+        <label for="phone" class="form-label">رقم الجوال</label>
+        <input type="text" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">كلمة المرور الجديدة (اترك الحقل فارغاً إذا لم ترغب بتغييرها)</label>
+        <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" />
+      </div>
+
+      <div class="mb-3">
+        <label for="major" class="form-label">التخصص</label>
+        <select class="form-select" id="major" name="major" required>
+          <option value="النساء والولادة">النساء والولادة</option>
+          <option value="الأطفال">الأطفال</option>
+          <option value="الجراحة">الجراحة</option>
+          <option value="الأسنان">الأسنان</option>
+          <!-- أضف تخصصات حسب حاجتك -->
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">العنوان / الموقع</label>
+        <input type="text" class="form-control" id="location" name="location" />
+      </div>
+
+      <div class="mb-3">
+        <label for="city_id" class="form-label">اختر مدينتك</label>
+        <select class="form-select" id="city_id" name="city_id" required>
           <option value="">-- اختر المدينة --</option>
-          <option value="رام الله والبيرة">رام الله والبيرة</option>
-          <option value="الخليل">الخليل</option>
-          <option value="نابلس" selected>نابلس</option>
-          <option value="طولكرم">طولكرم</option>
-          <option value="بيت لحم">بيت لحم</option>
-          <option value="جنين">جنين</option>
-          <option value="القدس">القدس</option>
-          <option value="غزة">غزة</option>
-          <option value="أريحا">أريحا</option>
-          <option value="طوباس">طوباس</option>
+          <option value="1">رام الله والبيرة</option>
+          <option value="2">الخليل</option>
+          <option value="3">نابلس</option>
+          <option value="4">طولكرم</option>
+          <option value="5">بيت لحم</option>
+          <option value="6">جنين</option>
+          <option value="7">القدس</option>
+          <option value="8">غزة</option>
+          <option value="9">أريحا</option>
+          <option value="10">طوباس</option>
         </select>
       </div>
 
       <div class="mb-3">
         <label for="idCard" class="form-label">تحديث صورة بطاقة العمل</label>
-        <input type="file" class="form-control" id="idCard" name="idCard" accept="image/*">
+        <input type="file" class="form-control" id="idCard" name="file" accept="image/*" />
         <small class="form-text text-muted">اترك هذا الحقل فارغًا إذا كنت لا تريد تغيير الصورة الحالية.</small>
       </div>
 
       <button type="submit" class="btn btn-primary">💾 حفظ التعديلات</button>
-      <a href="" class="btn btn-secondary" onclick="return confirm('هل أنت متأكد من تعديل هذا المستخدم؟')">🔙 إلغاء</a>
+      <a href="admin.html" class="btn btn-secondary" onclick="return confirm('هل أنت متأكد من إلغاء التعديل؟')">🔙 إلغاء</a>
     </form>
   </div>
+
+<script>
+  function getDoctorIdFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('id');
+  }
+
+  async function loadDoctorData(doctorId) {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`http://localhost:3001/doctor/${doctorId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) throw new Error("فشل في جلب بيانات الطبيب");
+      const data = await res.json();
+      const doctor = data.data || data;
+
+      document.querySelector('input[name="doctor_id"]').value = doctor.doctor_id || '';
+      document.getElementById('name').value = doctor.name || '';
+      document.getElementById('email').value = doctor.email || '';
+      document.getElementById('phone').value = doctor.phone || '';
+      // لا نملأ كلمة المرور لأننا لا نسترجعها من الخادم
+      document.getElementById('major').value = doctor.major || '';
+      document.getElementById('location').value = doctor.location || '';
+      document.getElementById('city_id').value = doctor.city_id || '';
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  const doctorId = getDoctorIdFromURL();
+  if (doctorId) {
+    loadDoctorData(doctorId);
+  } else {
+    alert("لم يتم تمرير معرف الطبيب إلى الصفحة");
+  }
+
+  document.getElementById('doctorForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const doctorId = formData.get('doctor_id');
+    const token = localStorage.getItem("token");
+
+    try {
+      const res = await fetch(`http://localhost:3001/doctor/update/${doctorId}`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || 'فشل في تحديث بيانات الطبيب');
+      }
+      alert('تم تحديث بيانات الطبيب بنجاح');
+      // window.location.href = 'admin.html'; // إعادة توجيه عند النجاح
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+</script>
 </body>
 </html>

@@ -11,6 +11,13 @@ exports.up = function(knex) {
         table.enum('role', ['admin','father','mother']).notNullable();
         table.integer('city_id').unsigned().nullable().references('city_id').inTable('cities').onDelete('SET NULL');
         table.enum('level', ['حمل', 'ولادة','السنة الأولى من طفلك','السنة الثانية من طفلك']).notNullable();
+        
+        // إضافة عمود لتخزين تاريخ آخر دورة شهرية
+        table.date('last_period_date').nullable(); // يمكن أن يكون فارغاً
+        
+        // إضافة عمود لتخزين شهر الحمل (إذا كان المستخدم في مرحلة حمل)
+        table.integer('pregnancy_month').nullable(); // يمكن أن يكون فارغاً، ويخزن الشهر كرقم (1-9)
+        
         table.timestamps(true, true);
     });
 };

@@ -1,82 +1,127 @@
+<!--التقويم لصفحة الطبيب-->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تقويم مواعيد الأطباء</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
-    <!-- Bootstrap RTL -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./src/app.css">
     <link rel="shortcut icon" href="https://github.com/MaisSerhan/Haven/blob/main/Assets/images/HalfTranLogo.png?raw=true">
-  <style>
-    body {
-      padding: 2rem;
-    }
-    #calendar {
-      background-color: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-  </style>
+    <style>
+        body {
+            padding: 2rem;
+        }
+        #calendar {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        /* أنماط إضافية لزر الخروج والمعلومات الشخصية */
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* لمحاذاة العناصر إلى اليسار في RTL */
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .doctor-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #dc3545; /* حد أحمر جذاب */
+        }
+        .doctor-info span {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #dc3545; /* لون نص أحمر */
+        }
+    </style>
 </head>
 <body>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>📅 تقويم مواعيد الأطباء</h2>
-    <a href="./addAppointment.html" class="btn btn-success">➕ إضافة موعد</a>
-  </div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>📅 تقويم مواعيد الأطباء</h2>
+        <!-- حاوية جديدة لاسم الطبيب وصورته وزر تسجيل الخروج -->
+        <div class="doctor-info">
+            <span id="doctorNameDisplay"></span>
+            <img id="doctorProfileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="صورة الطبيب">
+            <button class="btn btn-outline-danger" id="logoutBtn">تسجيل الخروج</button>
+        </div>
+        <a href="./weekschedual.html" class="btn btn-success">➕  مواعيد الأسبوعية</a>
+        <a href="./addAppointment.html" class="btn btn-success">➕ إضافة موعد</a>
+    </div>
 
-  <div id="calendar"></div>
+    <div id="calendar"></div>
 
-  <!-- FullCalendar + Bootstrap + Arabic support -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales/ar.global.min.js"></script>
+    <!-- FullCalendar + Bootstrap + Arabic support -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales/ar.global.min.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'ar',
-        initialView: 'timeGridWeek', // like Google Calendar
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        direction: 'rtl',
-        height: 'auto',
-        editable: true,
-        selectable: true,
-        events: [
-          {
-            title: 'د. أحمد - فحص مريض',
-            start: '2025-05-06T10:00:00',
-            end: '2025-05-06T11:00:00'
-          },
-          {
-            title: 'د. سارة - متابعة حمل',
-            start: '2025-05-07T14:00:00',
-            end: '2025-05-07T15:00:00'
-          }
-        ],
-        dateClick: function(info) {
-          if (confirm(`هل ترغب في حجز موعد في ${info.dateStr}؟`)) {
-            // Redirect to add form with selected date (optional)
-            window.location.href = './addAppointment.html?date=' + encodeURIComponent(info.dateStr);
-          }
-        },
-        eventClick: function(info) {
-          if (confirm(`تعديل الموعد: ${info.event.title}؟`)) {
-            // Redirect to edit page (pass event ID if using a backend)
-            window.location.href = './editAppointment.html?id=' + encodeURIComponent(info.event.id || '');
-          }
-        }
-      });
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // عرض اسم الطبيب وصورته
+            const doctorName = localStorage.getItem('user_name');
+            const doctorProfileImage = localStorage.getItem('user_profile_image');
 
-      calendar.render();
-    });
-  </script>
+            if (doctorName) {
+                document.getElementById('doctorNameDisplay').textContent = `مرحباً د. ${doctorName}`;
+            }
+            if (doctorProfileImage) {
+                document.getElementById('doctorProfileImage').src = doctorProfileImage;
+            }
+
+            // معالج حدث لزر تسجيل الخروج
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    localStorage.clear(); // مسح جميع بيانات المستخدم من localStorage
+                    window.location.href = '../../index.html'; // إعادة التوجيه إلى الصفحة الرئيسية
+                });
+            }
+
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'ar',
+                initialView: 'timeGridWeek', // like Google Calendar
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                direction: 'rtl',
+                height: 'auto',
+                editable: true,
+                selectable: true,
+                events: [
+                    {
+                        title: 'د. أحمد - فحص مريض',
+                        start: '2025-05-06T10:00:00',
+                        end: '2025-05-06T11:00:00'
+                    },
+                    {
+                        title: 'د. سارة - متابعة حمل',
+                        start: '2025-05-07T14:00:00',
+                        end: '2025-05-07T15:00:00'
+                    }
+                ],
+                dateClick: function(info) {
+                    if (confirm(`هل ترغب في حجز موعد في ${info.dateStr}؟`)) {
+                        window.location.href = './addAppointment.html?date=' + encodeURIComponent(info.dateStr);
+                    }
+                },
+                eventClick: function(info) {
+                    if (confirm(`تعديل الموعد: ${info.event.title}؟`)) {
+                        window.location.href = './editAppointment.html?id=' + encodeURIComponent(info.event.id || '');
+                    }
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
 </body>
 </html>

@@ -1,16 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-
-  loadHTML('../../Assets/Html/navbar.html', 'navbar-container', () => {
-   //   updateUI(savedLang, langName);
-        publicationLink ();
-  });
-
-  loadHTML('../../Assets/Html/footer.html', 'footer-container', () => {
-   // updateUI(savedLang, langName);
-  });
-
-  //updatePost(savedLang, langName);
-});
 function publicationLink () {
     const publicationLink = document.querySelector('.i18n-publications');
     console.log(publicationLink)
