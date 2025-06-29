@@ -13,6 +13,7 @@
 ---
 ## Table of Contents
 
+- [Demonstration](#🌸-Demonstration) 🌸 
 - [Introduction](#🌸-introduction) 🌸 
 - [Team Members](#👩‍💻-team-members) 👩‍💻
 - [Why The Name "Haven"](#why-the-name-haven❓)❓
@@ -20,8 +21,14 @@
 - [Project Components](#🧩-project-components) 🧩
 - [AI Model](#ai-and-ml-🧠) 📊
 - [Running the Project](#run-the-project-locally-🚀) 🚀 
-- [SRS Document 📄](#srs-document-📄)
+- [Thesis Document 📄](#Thesis-Document-📄)
 - [Powerpoint Presentation 🧑‍🏫](#powerpoint-presentation-🧑‍🏫)
+
+
+## 🌸 Demonstration
+
+[Haven Demonstration Link](https://drive.google.com/file/d/1Kzl_6ZlsV9m6LZhDziWj8LFLye5sr6UK/view?usp=sharing)
+
 
 ## 🌸 Introduction
 
@@ -123,11 +130,13 @@ python app.py
 ```
 
 
-##  SRS Document 📄
+##  Thsis Document 📄
 
-[SRS Document Link](SRS/Graduation%20Project.pdf)
+[Haven Thsis Document Link](SRS/Haven_Thesis.pdf)
 
 ## Powerpoint Presentation 🧑‍🏫
+
+[Haven Powerpoint Presentation  Link](https://drive.google.com/file/d/1crF2zEBwb1o0hRRdQxdjG_Dz3vnYmI1U/view)
 ---
 
 <p align="center" dir="rtl">
