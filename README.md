@@ -130,9 +130,9 @@ python app.py
 ```
 
 
-##  Thsis Document 📄
+##  Thesis Document 📄
 
-[Haven Thsis Document Link](SRS/Haven_Thesis.pdf)
+[Haven Thesis Document Link](SRS/Haven_Thesis.pdf)
 
 ## Powerpoint Presentation 🧑‍🏫
 
